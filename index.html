@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #colorSelect {
+        padding: 10px;
+        font-size: 16px;
+      }
+      .color-square {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        display: inline-block;
+        border: 1px solid #000;
+      }
+      .result-line {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #result {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="leefilters.js"></script>
+    <h1>Color App</h1>
+    <p>Select a color from the list:</p>
+    <select id="colorSelect">
+      <option value="" disabled selected>Select a color</option>
+      <!-- Populate the select options with colors from leeFilters -->
+      <script>
+        leeFilters.forEach((item) => {
+          document.getElementById(
+            "colorSelect"
+          ).innerHTML += `<option value="${item.colorCode}">${item.name}</option>`;
+        });
+      </script>
+    </select>
+    <button onclick="findContrastingColor()">Find Contrasting Color</button>
+
+    <!-- Line for displaying the input color and its name -->
+    <div class="result-line">
+      <p>Input Color:</p>
+      <div class="color-square" id="userColorSquare"></div>
+      <p id="userColorName"></p>
+    </div>
+
+    <!-- Line for displaying the contrasting color and its name -->
+    <div class="result-line">
+      <p>Contrasting Color:</p>
+      <div class="color-square" id="contrastingColorSquare"></div>
+      <p id="contrastingColorName"></p>
+    </div>
+
+    <script>
+      // Function to find the contrasting color
+      function findContrastingColor() {
+        const selectedColor = document.getElementById("colorSelect").value;
+        const userColorSquare = document.getElementById("userColorSquare");
+        const contrastingColorSquare = document.getElementById(
+          "contrastingColorSquare"
+        );
+        const userColorName = document.getElementById("userColorName");
+        const contrastingColorName = document.getElementById(
+          "contrastingColorName"
+        );
+
+        if (selectedColor === "") {
+          alert("Please select a color.");
+          return;
+        }
+
+        const selectedColorObj = leeFilters.find(
+          (item) => item.colorCode === selectedColor
+        );
+
+        if (selectedColorObj) {
+          // Set the background color of the input color square
+          userColorSquare.style.backgroundColor = selectedColorObj.colorCode;
+          // Display the name of the input color
+          userColorName.textContent = selectedColorObj.name;
+
+          // Calculate the contrasting color in the opposite direction of RGB
+          const contrastingColorObj =
+            calculateContrastingColor(selectedColorObj);
+
+          if (contrastingColorObj) {
+            // Set the background color of the contrasting color square
+            contrastingColorSquare.style.backgroundColor =
+              contrastingColorObj.colorCode;
+            // Display the name of the contrasting color
+            contrastingColorName.textContent = contrastingColorObj.name;
+          } else {
+            alert("No contrasting color found in the list.");
+          }
+        } else {
+          alert("Color not found in the list.");
+        }
+      }
+
+      // Function to calculate the contrasting color in the opposite direction of RGB
+      function calculateContrastingColor(selectedColorObj) {
+        const selectedRgbColor = hexToRgb(selectedColorObj.colorCode);
+        const contrastingRgbColor = selectedRgbColor.map(
+          (component) => 255 - component
+        );
+
+        // Find the closest color in leeFilters based on RGB values
+        let closestContrastingColor = null;
+        let minDistance = Infinity;
+
+        for (const colorObj of leeFilters) {
+          const rgbColor = hexToRgb(colorObj.colorCode);
+          const distance = calculateColorDistance(
+            contrastingRgbColor,
+            rgbColor
+          );
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestContrastingColor = colorObj;
+          }
+        }
+
+        return closestContrastingColor;
+      }
+
+      // Function to calculate the Euclidean distance between two RGB colors
+      function calculateColorDistance(color1, color2) {
+        return Math.sqrt(
+          Math.pow(color1[0] - color2[0], 2) +
+            Math.pow(color1[1] - color2[1], 2) +
+            Math.pow(color1[2] - color2[2], 2)
+        );
+      }
+
+      // Function to convert RGB to HEX
+      function rgbToHex(rgbColor) {
+        const [r, g, b] = rgbColor;
+        const rHex = r.toString(16).padStart(2, "0");
+        const gHex = g.toString(16).padStart(2, "0");
+        const bHex = b.toString(16).padStart(2, "0");
+        return `#${rHex}${gHex}${bHex}`;
+      }
+
+      // Function to convert HEX to RGB
+      function hexToRgb(hex) {
+        const hexValue = parseInt(hex.slice(1), 16);
+        const r = (hexValue >> 16) & 255;
+        const g = (hexValue >> 8) & 255;
+        const b = hexValue & 255;
+
+        return [r, g, b];
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+#colorSelect {
+  padding: 10px;
+  font-size: 16px;
+}
+.color-square {
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  display: inline-block;
+  border: 1px solid #c5c5c5;
+}
+#result {
+  font-size: 20px;
+  margin-top: 20px;
+}
