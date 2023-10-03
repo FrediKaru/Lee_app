@@ -153,12 +153,14 @@ const leeFilters = [
   },
   {
     link: "https://leefilters.com/colour/048-rose-purple/",
+    name: "048 Rose Purple",
     description: "Good for emulating evening. Great backlight.",
     leeCode: "048",
     colorCode: "#E66EAF",
   },
   {
     link: "https://leefilters.com/colour/049-medium-purple/",
+    name: "049 Medium Purple",
     description: "A strong cheerful glow, good for cycloramas and pantomimes.",
     leeCode: "049",
     colorCode: "#BE0091",
@@ -1073,6 +1075,7 @@ const leeFilters = [
   },
   {
     link: "https://leefilters.com/colour/345-fuchsia-pink/",
+    name: "345 Special medium lavender",
     description: "Good for musicals, pantomimes and sultry scenes.",
     leeCode: "345",
     colorCode: "#CD6ED7",
@@ -1552,14 +1555,14 @@ const leeFilters = [
     leeCode: "744",
     colorCode: "#F8C882",
   },
-  {
-    link: "https://leefilters.com/colour/746-brown/",
-    name: "746 Brown",
-    description:
-      "To give a murky, dirty feel to tungsten. A darker, less pink chocolate.",
-    leeCode: "746",
-    colorCode: "#6E3C00",
-  },
+  // {
+  //   link: "https://leefilters.com/colour/746-brown/",
+  //   name: "746 Brown",
+  //   description:
+  //     "To give a murky, dirty feel to tungsten. A darker, less pink chocolate.",
+  //   leeCode: "746",
+  //   colorCode: "#6E3C00",
+  // },
   {
     link: "https://leefilters.com/colour/747-easy-white/",
     name: "747 Easy White",
@@ -1709,6 +1712,7 @@ const leeFilters = [
   },
   {
     link: "https://leefilters.com/colour/797-deep-purple/",
+    name: "797 Deep Purple",
     description:
       "Used in musical performances for general colour washes and set lighting.",
     leeCode: "797",
@@ -1716,6 +1720,7 @@ const leeFilters = [
   },
   {
     link: "https://leefilters.com/colour/798-chrysalis-pink/",
+    name: "798 Chrysalis Pink",
     description: "A new deeper lavender with a dash of rose blusher.",
     leeCode: "798",
     colorCode: "#A000BE",
@@ -1727,30 +1732,30 @@ const leeFilters = [
     leeCode: "799",
     colorCode: "#3C00B4",
   },
-  {
-    link: "https://leefilters.com/colour/200-double-c-t-blue/",
-    description: "Converts tungsten (3200K) to daylight (26000K) .",
-    leeCode: "200",
-    colorCode: "#91BEF5",
-  },
-  {
-    link: "https://leefilters.com/colour/201-full-c-t-blue/",
-    description: "Converts tungsten (3200K) to photographic daylight (5700K).",
-    leeCode: "201",
-    colorCode: "#C3E1FA",
-  },
-  {
-    link: "https://leefilters.com/colour/202-half-c-t-blue/",
-    description: "Converts tungsten (3200K) to daylight (4300K).",
-    leeCode: "202",
-    colorCode: "#D7F0FF",
-  },
-  {
-    link: "https://leefilters.com/colour/203-quarter-c-t-blue/",
-    description: "Converts tungsten (3200K) to daylight (3600K).",
-    leeCode: "203",
-    colorCode: "#EBFCFF",
-  },
+  // {
+  //   link: "https://leefilters.com/colour/200-double-c-t-blue/",
+  //   description: "Converts tungsten (3200K) to daylight (26000K) .",
+  //   leeCode: "200",
+  //   colorCode: "#91BEF5",
+  // },
+  // {
+  //   link: "https://leefilters.com/colour/201-full-c-t-blue/",
+  //   description: "Converts tungsten (3200K) to photographic daylight (5700K).",
+  //   leeCode: "201",
+  //   colorCode: "#C3E1FA",
+  // },
+  // {
+  //   link: "https://leefilters.com/colour/202-half-c-t-blue/",
+  //   description: "Converts tungsten (3200K) to daylight (4300K).",
+  //   leeCode: "202",
+  //   colorCode: "#D7F0FF",
+  // },
+  // {
+  //   link: "https://leefilters.com/colour/203-quarter-c-t-blue/",
+  //   description: "Converts tungsten (3200K) to daylight (3600K).",
+  //   leeCode: "203",
+  //   colorCode: "#EBFCFF",
+  // },
   {
     link: "https://leefilters.com/colour/204-full-c-t-orange/",
     name: "204 Full C.T. Orange",
